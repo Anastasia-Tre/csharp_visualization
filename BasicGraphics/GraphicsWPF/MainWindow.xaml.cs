@@ -49,6 +49,6 @@ namespace GraphicsWPF
             return bitmapImage;
         }
 
-        
+
     }
 }
