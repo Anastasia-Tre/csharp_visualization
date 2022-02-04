@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GraphicsWPF
 {
@@ -26,27 +23,26 @@ namespace GraphicsWPF
         private void Render()
         {
             Random rnd = new Random();
-            Bitmap bmp = StandardGraphics.Render.GetBitmap(rnd, (int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
+            using Bitmap bmp = new Bitmap((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
+            StandardGraphics.Render.GenerateImage(bmp, rnd, 500);
             ResultImage.Source = BitmapToBitmapImage(bmp);
         }
 
         private BitmapImage BitmapToBitmapImage(Bitmap bmp)
         {
-            using (var memory = new System.IO.MemoryStream())
-            {
-                bmp.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
-                memory.Position = 0;
+            using var memory = new System.IO.MemoryStream();
+            bmp.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+            memory.Position = 0;
 
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = memory;
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.EndInit();
-                bitmapImage.Freeze();
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = memory;
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            bitmapImage.EndInit();
+            bitmapImage.Freeze();
 
-                return bitmapImage;
-            }
-            
+            return bitmapImage;
         }
+
     }
 }
