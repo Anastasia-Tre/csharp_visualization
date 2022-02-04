@@ -22,6 +22,7 @@
             </StackPanel>
 
             <Canvas x:Name="ResultCanvas" Grid.Column="1">
+                <Image x:Name="ResultImage"/>
             </Canvas>
         </Grid>
     </Border>

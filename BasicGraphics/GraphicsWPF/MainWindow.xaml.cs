@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace GraphicsWPF
@@ -18,20 +20,33 @@ namespace GraphicsWPF
 
         private void DrawButton_Click(object sender, RoutedEventArgs e)
         {
-            Render(ResultCanvas);
+            Render();
         }
 
-        private void Render(Canvas canvas)
+        private void Render()
         {
-            Ellipse ellipse = new Ellipse
+            Random rnd = new Random();
+            Bitmap bmp = StandardGraphics.Render.GetBitmap(rnd, (int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
+            ResultImage.Source = BitmapToBitmapImage(bmp);
+        }
+
+        private BitmapImage BitmapToBitmapImage(Bitmap bmp)
+        {
+            using (var memory = new System.IO.MemoryStream())
             {
-                Height = 150,
-                Width = 150,
-            };
-            ellipse.Fill = Brushes.Red;
-            canvas.Children.Add(ellipse);
-            Canvas.SetLeft(ellipse, 30);
-            Canvas.SetTop(ellipse, 30);
+                bmp.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                return bitmapImage;
+            }
+            
         }
     }
 }
