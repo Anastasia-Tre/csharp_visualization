@@ -5,7 +5,7 @@ namespace StandardGraphics
 {
     public static class Render
     {
-        public static void GenerateImage(Bitmap bmp, Random rnd, int circles = 100)
+        public static void GenerateImage(Bitmap bmp, Random rnd, int circles = 2000)
         {
             using Graphics gfx = Graphics.FromImage(bmp);
             using Pen pen = new Pen(Color.White);

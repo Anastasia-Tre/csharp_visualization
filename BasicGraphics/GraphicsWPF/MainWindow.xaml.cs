@@ -20,11 +20,16 @@ namespace GraphicsWPF
             Render();
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Render();
+        }
+
         private void Render()
         {
             Random rnd = new Random();
             using Bitmap bmp = new Bitmap((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
-            StandardGraphics.Render.GenerateImage(bmp, rnd, 500);
+            StandardGraphics.Render.GenerateImage(bmp, rnd);
             ResultImage.Source = BitmapToBitmapImage(bmp);
         }
 
@@ -44,5 +49,6 @@ namespace GraphicsWPF
             return bitmapImage;
         }
 
+        
     }
 }

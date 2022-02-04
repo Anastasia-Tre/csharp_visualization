@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraphicsWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        SizeChanged="Window_SizeChanged"
+        Title="Graphics" Height="450" Width="800">
 
     <Border Padding="15">
         <Grid>
