@@ -7,11 +7,12 @@ namespace Model
 {
     class Star
     {
-        float X { get; set; }
-        float Y { get; set; }
-        float Size { get; set; }
-        Color Color { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Size { get; set; }
+        public Color Color { get; set; }
 
+        public const int MaxSize = 30;
         public static Dictionary<StarColor, Color> Colors = new Dictionary<StarColor, Color>()
         {
             { StarColor.White, Color.FromArgb(255, 255, 255) },
