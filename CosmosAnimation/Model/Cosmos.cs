@@ -8,11 +8,21 @@ namespace Model
 {
     class Cosmos
     {
+        public int StarsCount { get; set; } = 200;
+        public int Width { get; set; } = 500;
+        public int Height { get; set; } = 500;
+
         Star[] _stars;
-        int Width;
-        int Height;
         Random _rnd = new Random();
 
+        public Cosmos()
+        {
+            _stars = new Star[StarsCount];
+            for (int i = 0; i < StarsCount; i++)
+            {
+                _stars[i] = GetRandomStar();
+            }
+        }
 
         Star GetRandomStar()
         {
@@ -26,5 +36,7 @@ namespace Model
         }
 
         public Star[] GetStars() => _stars;
+
+
     }
 }
