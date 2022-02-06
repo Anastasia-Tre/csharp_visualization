@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace Model
 {
-    class Star
+    public class Star
     {
         public float X { get; set; }
         public float Y { get; set; }
@@ -22,7 +22,7 @@ namespace Model
         };
     }
 
-    enum StarColor
+    public enum StarColor
     {
         White,
         Blue,
