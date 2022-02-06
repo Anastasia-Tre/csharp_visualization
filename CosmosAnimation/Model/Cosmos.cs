@@ -37,6 +37,19 @@ namespace Model
 
         public Star[] GetStars() => _stars;
 
+        public void MoveStars(float step = .1f)
+        {
+            for (int i = 0; i < StarsCount; i++)
+            {
+                _stars[i].X += (_stars[i].X - .5f) * _stars[i].Size * step;
+                _stars[i].Y += (_stars[i].Y - .5f) * _stars[i].Size * step;
+                _stars[i].Size += _stars[i].Size * step * 2;
 
+                // check if star out of borders
+                if (_stars[i].X < 0 || _stars[i].X > Width ||
+                    _stars[i].Y < 0 || _stars[i].Y > Height)
+                    _stars[i] = GetRandomStar();
+            }
+        }
     }
 }
