@@ -34,7 +34,6 @@ namespace ViewWPF
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += timerTick;
-
         }
 
         private void timerTick(object sender, EventArgs e)
@@ -42,6 +41,12 @@ namespace ViewWPF
             stopwatch.Restart();
             cosmos.MoveStars();
 
+            Bitmap bmp = new Bitmap((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
+            Render.GenerateStars(bmp, cosmos.GetStars());
+            ResultImage.Source = BitmapToBitmapImage(bmp);
+
+            double elapsedSec = (double)stopwatch.ElapsedTicks / Stopwatch.Frequency;
+            Title = $"Cosmos - {elapsedSec * 1000:0.00} ms ({1 / elapsedSec:0.00} FPS)";
         }
 
         private BitmapImage BitmapToBitmapImage(Bitmap bmp)

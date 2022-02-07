@@ -20,5 +20,8 @@
                         Padding="10 3" Click="RunButton_Click" />
         </StackPanel>
 
+        <Canvas x:Name="ResultCanvas" Grid.Row="1">
+            <Image x:Name="ResultImage"/>
+        </Canvas>
     </Grid>
 </Window>
