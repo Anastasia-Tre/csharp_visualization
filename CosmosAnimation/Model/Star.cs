@@ -10,7 +10,7 @@ namespace Model
         public float Size { get; set; }
         public Color Color { get; set; }
 
-        public const int MaxSize = 30;
+        public const int MaxSize = 8;
         public static Dictionary<StarColor, Color> Colors = new Dictionary<StarColor, Color>()
         {
             { StarColor.White, Color.FromArgb(255, 255, 255) },

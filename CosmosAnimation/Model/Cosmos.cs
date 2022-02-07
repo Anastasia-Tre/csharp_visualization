@@ -4,7 +4,7 @@ namespace Model
 {
     public class Cosmos
     {
-        public int StarsCount { get; set; } = 400;
+        public int StarsCount { get; set; } = 500;
         public float Width { get; set; } = 500;
         public float Height { get; set; } = 500;
 
@@ -36,13 +36,14 @@ namespace Model
             return _stars;
         }
 
-        public void MoveStars(float step = .001f)
+        public void MoveStars(float step = .004f)
         {
             for (int i = 0; i < StarsCount; i++)
             {
-                _stars[i].X += (_stars[i].X - .5f) * _stars[i].Size * step;
-                _stars[i].Y += (_stars[i].Y - .5f) * _stars[i].Size * step;
-                _stars[i].Size += _stars[i].Size * step * 2;
+                float koef = (Star.MaxSize * 4 - _stars[i].Size) * step;
+                _stars[i].X += (_stars[i].X - .5f) * koef;
+                _stars[i].Y += (_stars[i].Y - .5f) * koef;
+                _stars[i].Size += _stars[i].Size * step * 1.2f;
 
                 // check if star out of borders
                 if (_stars[i].X < 0 || _stars[i].X > Width ||

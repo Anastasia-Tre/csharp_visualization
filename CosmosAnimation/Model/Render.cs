@@ -14,11 +14,11 @@ namespace Model
             {
                 brush.Color = stars[i].Color;
 
-                float x = stars[i].X;
-                float y = stars[i].Y;
+                float x = stars[i].X * bmp.Width;
+                float y = stars[i].Y * bmp.Height;
                 float size = stars[i].Size;
 
-                gfx.FillEllipse(brush, x, y, size, size);
+                gfx.FillEllipse(brush, x - size, y - size, size * 2, size * 2);
             }
 
         }
