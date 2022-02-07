@@ -28,8 +28,8 @@ namespace Model
         {
             return new Star
             {
-                X = _rnd.Next(Width),
-                Y = _rnd.Next(Height),
+                X = (float)_rnd.NextDouble(),
+                Y = (float)_rnd.NextDouble(),
                 Size = _rnd.Next(Star.MaxSize),
                 Color = Star.Colors[(StarColor)_rnd.Next(Star.Colors.Count)]
             };
@@ -37,7 +37,7 @@ namespace Model
 
         public Star[] GetStars() => _stars;
 
-        public void MoveStars(float step = .1f)
+        public void MoveStars(float step = .01f)
         {
             for (int i = 0; i < StarsCount; i++)
             {

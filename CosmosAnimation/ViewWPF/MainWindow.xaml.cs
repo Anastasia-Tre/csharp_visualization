@@ -41,5 +41,10 @@ namespace ViewWPF
 
             return bitmapImage;
         }
+
+        private void RunButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
