@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -35,7 +31,10 @@ namespace Model
             };
         }
 
-        public Star[] GetStars() => _stars;
+        public Star[] GetStars()
+        {
+            return _stars;
+        }
 
         public void MoveStars(float step = .001f)
         {
