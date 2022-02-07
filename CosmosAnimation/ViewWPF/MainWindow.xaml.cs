@@ -24,16 +24,12 @@ namespace ViewWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Cosmos cosmos = new Cosmos();
+        Cosmos cosmos;
         Stopwatch stopwatch = new Stopwatch();
 
         public MainWindow()
         {
             InitializeComponent();
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1);
-            timer.Tick += timerTick;
         }
 
         private void timerTick(object sender, EventArgs e)
@@ -67,7 +63,16 @@ namespace ViewWPF
 
         private void RunButton_Click(object sender, RoutedEventArgs e)
         {
+            cosmos = new Cosmos()
+            {
+                Width = (float)ResultCanvas.ActualWidth,
+                Height = (float)ResultCanvas.ActualHeight,
+            };
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timerTick;
+            timer.Start();
         }
     }
 }

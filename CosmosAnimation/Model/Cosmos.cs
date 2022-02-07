@@ -8,9 +8,9 @@ namespace Model
 {
     public class Cosmos
     {
-        public int StarsCount { get; set; } = 200;
-        public int Width { get; set; } = 500;
-        public int Height { get; set; } = 500;
+        public int StarsCount { get; set; } = 400;
+        public float Width { get; set; } = 500;
+        public float Height { get; set; } = 500;
 
         Star[] _stars;
         Random _rnd = new Random();
@@ -37,7 +37,7 @@ namespace Model
 
         public Star[] GetStars() => _stars;
 
-        public void MoveStars(float step = .01f)
+        public void MoveStars(float step = .001f)
         {
             for (int i = 0; i < StarsCount; i++)
             {
