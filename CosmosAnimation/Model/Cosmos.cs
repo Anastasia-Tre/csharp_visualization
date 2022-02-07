@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Cosmos
+    public class Cosmos
     {
         public int StarsCount { get; set; } = 200;
         public int Width { get; set; } = 500;

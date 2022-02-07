@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ViewWPF
 {
@@ -21,9 +24,24 @@ namespace ViewWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        Cosmos cosmos = new Cosmos();
+        Stopwatch stopwatch = new Stopwatch();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timerTick;
+
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            stopwatch.Restart();
+            cosmos.MoveStars();
+
         }
 
         private BitmapImage BitmapToBitmapImage(Bitmap bmp)
