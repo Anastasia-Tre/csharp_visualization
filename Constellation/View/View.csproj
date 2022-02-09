@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Constellation\Model.csproj" />
+    <ProjectReference Include="..\Renderer\Renderer.csproj" />
   </ItemGroup>
 
 </Project>

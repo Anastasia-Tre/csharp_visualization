@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Model;
+using Renderer;
 
 namespace View
 {
@@ -26,10 +27,13 @@ namespace View
     {
         Cosmos cosmos; 
         DispatcherTimer timer = new DispatcherTimer();
+        RendererSkiaSharp renderer;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            renderer = new RendererSkiaSharp((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
 
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += timerTick;
@@ -39,7 +43,7 @@ namespace View
         private void timerTick(object sender, EventArgs e)
         {
             Bitmap bmp = new Bitmap((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
-            //Render.GenerateStars(bmp, cosmos.GetStars());
+            cosmos.Render(renderer);
             ResultImage.Source = BitmapToBitmapImage(bmp);
 
         }

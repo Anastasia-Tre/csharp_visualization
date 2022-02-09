@@ -3,14 +3,21 @@ using SkiaSharp;
 
 namespace Renderer
 {
-    public class Renderer : IRenderer
+    public class RendererSkiaSharp : IRenderer
     {
         private SKCanvas _canvas;
         private SKPaint _paint;
 
-        public Renderer(SKCanvas canvas)
+        public RendererSkiaSharp(int width, int height)
         {
-            _canvas = canvas;
+            var imageInfo = new SKImageInfo(
+                width: width,
+                height: height,
+                colorType: SKColorType.Rgba8888,
+                alphaType: SKAlphaType.Premul);
+            var surface = SKSurface.Create(imageInfo);
+
+            _canvas = surface.Canvas;
             _paint = new SKPaint()
             {
                 IsAntialias = true,
