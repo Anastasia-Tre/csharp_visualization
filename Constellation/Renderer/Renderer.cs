@@ -1,32 +1,52 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SkiaSharp;
 
 namespace Renderer
 {
     public class Renderer : IRenderer
     {
+        private SKCanvas _canvas;
+        private SKPaint _paint;
+
+        public Renderer(SKCanvas canvas)
+        {
+            _canvas = canvas;
+            _paint = new SKPaint()
+            {
+                IsAntialias = true,
+            };
+        }
+
+        private SKColor ConvertColor(Color color)
+        {
+            return new SKColor(color.R, color.G, color.B, color.A);
+        }
+
+        private SKPoint ConvertPoint(Point pt)
+        {
+            return new SKPoint((float)pt.X, (float)pt.Y);
+        }
+
         public void Clear(Color color)
         {
-            throw new NotImplementedException();
+            _canvas.Clear(ConvertColor(color));
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _paint.Dispose();
         }
 
         public void DrawLine(Point pt1, Point pt2, double lineWidth, Color color)
         {
-            throw new NotImplementedException();
+            _paint.Color = ConvertColor(color);
+            _canvas.DrawLine(ConvertPoint(pt1), ConvertPoint(pt2), _paint);
         }
 
         public void FillCircle(Point center, double radius, Color color)
         {
-            throw new NotImplementedException();
+            _paint.Color = ConvertColor(color);
+            _canvas.DrawCircle(ConvertPoint(center), (float)radius, _paint);
         }
     }
 }
