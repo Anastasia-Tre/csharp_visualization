@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Model
 {
     public class Star
@@ -15,6 +10,6 @@ namespace Model
 
         public float Size { get; set; } = 3;
         public Color Color { get; set; } = new Color(255, 255, 255);
-
+        public Point Point { get { return new Point(X, Y); } }
     }
 }
