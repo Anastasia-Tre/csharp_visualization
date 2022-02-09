@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model 
 {
-    class Cosmos : IDisposable
+    public class Cosmos : IDisposable
     {
         public int StarsCount { get; set; } = 500;
         public float Width { get; set; } = 500;
