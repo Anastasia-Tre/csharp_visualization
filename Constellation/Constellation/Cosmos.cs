@@ -42,7 +42,7 @@ namespace Model
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            isRunning = false;
         }
 
         Star GetRandomStar(float minVelocity = .1f)

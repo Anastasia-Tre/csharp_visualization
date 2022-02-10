@@ -8,16 +8,9 @@ namespace Renderer
         private SKCanvas _canvas;
         private SKPaint _paint;
 
-        public RendererSkiaSharp(int width, int height)
+        public RendererSkiaSharp(SKCanvas canvas)
         {
-            var imageInfo = new SKImageInfo(
-                width: width,
-                height: height,
-                colorType: SKColorType.Rgba8888,
-                alphaType: SKAlphaType.Premul);
-            var surface = SKSurface.Create(imageInfo);
-
-            _canvas = surface.Canvas;
+            _canvas = canvas;
             _paint = new SKPaint()
             {
                 IsAntialias = true,
