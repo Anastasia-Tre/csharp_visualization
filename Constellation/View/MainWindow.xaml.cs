@@ -27,7 +27,6 @@ namespace View
     {
         Cosmos cosmos; 
         DispatcherTimer timer = new DispatcherTimer();
-        RendererSkiaSharp renderer;
 
         public MainWindow()
         {
@@ -46,29 +45,7 @@ namespace View
 
         private void timerTick(object sender, EventArgs e)
         {
-            //Bitmap bmp = new Bitmap((int)ResultCanvas.ActualWidth, (int)ResultCanvas.ActualHeight);
             Result.InvalidateVisual();
-            
-            //cosmos.Render(renderer);
-            
-            //ResultImage.Source = BitmapToBitmapImage(bmp);
-
-        }
-
-        private BitmapImage BitmapToBitmapImage(Bitmap bmp)
-        {
-            using var memory = new System.IO.MemoryStream();
-            bmp.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
-            memory.Position = 0;
-
-            BitmapImage bitmapImage = new BitmapImage();
-            bitmapImage.BeginInit();
-            bitmapImage.StreamSource = memory;
-            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-            bitmapImage.EndInit();
-            bitmapImage.Freeze();
-
-            return bitmapImage;
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -84,10 +61,8 @@ namespace View
 
         private void SKElement_PaintSurface(object sender, SkiaSharp.Views.Desktop.SKPaintSurfaceEventArgs e)
         {
-            renderer = new RendererSkiaSharp(e.Surface.Canvas);
+            var renderer = new RendererSkiaSharp(e.Surface.Canvas);
             cosmos.Render(renderer);
-            //renderer.Clear(new Model.Color(134, 170, 45));
-            //e.Surface.Canvas.Clear(new SkiaSharp.SKColor(45, 45, 45));
         }
     }
 }

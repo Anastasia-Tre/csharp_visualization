@@ -4,16 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:skia="clr-namespace:SkiaSharp.Views.WPF;assembly=SkiaSharp.Views.WPF" 
-        xmlns:skiasharp="clr-namespace:SkiaSharp;assembly=SkiaSharp"
-        xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
         Closing="Window_Closing"
         Title="Constellation" Height="450" Width="800">
     <Grid>
-        <Canvas x:Name="ResultCanvas">
-            <Image x:Name="ResultImage"/>
-        </Canvas>
         <skia:SKElement x:Name="Result" PaintSurface="SKElement_PaintSurface"/>
     </Grid>
 </Window>
