@@ -9,9 +9,9 @@ namespace Model
 {
     public class Cosmos : IDisposable
     {
-        public int StarsCount { get; set; } = 500;
-        public float Width { get; set; } = 500;
-        public float Height { get; set; } = 500;
+        public int StarsCount { get; set; } = 300;
+        public float Width { get; set; } = 960;
+        public float Height { get; set; } = 430;
 
         Star[] _stars;
         Random _rnd = new Random();
@@ -78,7 +78,7 @@ namespace Model
 
         public void Render(IRenderer renderer)
         {
-            var backColor = new Color(0, 0, 0);
+            var backColor = new Color(45, 45, 45);
             renderer.Clear(backColor);
 
             foreach (var star in _stars)
