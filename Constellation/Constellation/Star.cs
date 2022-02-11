@@ -10,6 +10,6 @@ namespace Model
 
         public float Size { get; set; } = 3;
         public Color Color { get; set; } = new Color(255, 255, 255);
-        public Point Point { get { return new Point(X, Y); } }
+        public Point Point => new Point(X, Y);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Model 
+namespace Model
 {
     public class Cosmos : IDisposable
     {
@@ -93,7 +93,7 @@ namespace Model
                     double distance = Math.Sqrt(dX * dX + dY * dY);
 
                     if (distance > connectDistance) continue;
-                    
+
                     int alpha = (int)(255 - distance / connectDistance * 255) * 2;
                     alpha = Math.Min(alpha, 255);
                     alpha = Math.Max(alpha, 0);
